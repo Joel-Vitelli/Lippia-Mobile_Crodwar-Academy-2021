@@ -38,7 +38,7 @@
             </properties>
         </profile>
         <profile>
-            <id>Jenkins</id>
+            <id>Stack</id>
             <activation>
             </activation>
             <properties>
