@@ -18,7 +18,7 @@ Pasos para ejecutar el proyecto:
 	  el estado de todos los contenedores debe quedar en healthy 
 	6 una vez levantado el stack hay que correr el proyecto de ejemplo con el siguiente comando 
 	 mvn clean -P Stack test 
-	7 deberia empezar a correr el proyecto, y podriamos ver los novnc en http://localhost:6082/  y en http://localhost:6082/
+	7 deberia empezar a correr el proyecto, y podriamos ver los novnc en http://localhost:6080/  y en http://localhost:6082/
 	8 al finalizar la corrida podriamos ver el reporte en html generado para extent en la carpeta appiumcucumberexampleproject/target/cucumber-report	
 	
 	
