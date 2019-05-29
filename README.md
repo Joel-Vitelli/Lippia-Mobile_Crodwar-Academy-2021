@@ -1,4 +1,4 @@
-#Proyecto de ejemplo Mobile usando Lippia 1.6 ([http://lippia.io])
+#Proyecto de ejemplo Mobile usando Lippia 1.6 ([lippia.io])
 
 ##Requisitos : 
 + instalado JDK 8,
@@ -20,7 +20,7 @@
 
 4. levantar appium stack y los emuladores con los siguientes comandos  
 
-     ```docker-composite up -d```
+     ```docker-compose up -d```
 
 
 5. esperar a que los contenedores docker esten andando con el siguiente comando   
