@@ -1,4 +1,4 @@
-#Proyecto de ejemplo Mobile usando Lippia 1.6 (url landing )
+#Proyecto de ejemplo Mobile usando Lippia 1.6 ([http://lippia.io])
 
 ##Requisitos : 
 + instalado JDK 8,
@@ -19,19 +19,24 @@
 	 
 
 4. levantar appium stack y los emuladores con los siguientes comandos  
-```docker-composite up -d´´´
+
+     ```docker-composite up -d```
 
 
-5. esperar a que los contenedores docker esten andando con el siguiente comando
+5. esperar a que los contenedores docker esten andando con el siguiente comando   
 
-```docker container ps```
+     ```docker container ps```
 
-el estado de todos los contenedores debe quedar en *healthy*
+    el estado de todos los contenedores debe quedar en *healthy*  
 
-6 una vez levantado el stack hay que correr el proyecto de ejemplo con el siguiente comando 
-	 mvn clean -P Stack test 
-	7 deberia empezar a correr el proyecto, y podriamos ver los novnc en http://localhost:6080/  y en http://localhost:6082/
-	8 al finalizar la corrida podriamos ver el reporte en html generado para extent en la carpeta appiumcucumberexampleproject/target/cucumber-report	
+6. una vez levantado el stack hay que correr el proyecto de ejemplo con el siguiente comando   
+
+    ```mvn clean -P Stack test```  
+
+
+7. Deberia empezar a correr el proyecto, y podriamos ver los novnc en http://localhost:6080/ y en http://localhost:6082/
+
+8. Al finalizar la corrida podriamos ver el reporte en html generado para extent en la carpeta  **appiumcucumberexampleproject/target/cucumber-report**
 	
 	
 	
