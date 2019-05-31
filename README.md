@@ -39,6 +39,9 @@
 8. Al finalizar la corrida podriamos ver el reporte en html generado para extent en la carpeta  **appiumcucumberexampleproject/target/cucumber-report**
 	
 	
+##Troubleshooting	
+docker exec -it [CONTAINER-NAME] tail -f /var/log/supervisor/docker-android.stdout.log
+	
 	
 		
 	
