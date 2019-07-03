@@ -1,46 +1,31 @@
-#Proyecto de ejemplo Mobile usando Lippia 1.6 ([lippia.io])
+#Example test project with Lippia 1.6 ([lippia.io])
 
-##Requisitos : 
-+ instalado JDK 8,
-+ docker 1.7 o superior
-+ docker-composite compatible
-+ maven 3.3
-
-##Pasos para ejecutar el proyecto:
-1. Clonar el proyecto  con git clone 
-```git clone https://bitbucket.org/crowdarautomation/appiumcucumberexampleproject.git```
-2. Clonar el stack 
-```git clone https://bitbucket.org/crowdarautomation/mobile-dkr-fwk.git```
-3. Copiar el archivo apk ubicado en 
-
-     **appiumcucumberexampleproject/src/main/resources/mobile/app/ApiDemos.apk**  
-     a la carpeta  
-     **/mobile-dkr-fwk/example/sample_apk/ApiDemos.apk**  
+##Requirements :
+- git client   
+     https://www.atlassian.com/git/tutorials/install-git
 	 
+- JDK 8 	    
+	  https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html   
+	  https://openjdk.java.net/install/   
+	 
++ maven 3   
+	 https://maven.apache.org/download.cgi   
 
-4. levantar appium stack y los emuladores con los siguientes comandos  
 
-     ```docker-compose up -d```
+##Pre Step:   
+	
+- Start "Mobile Docker framework" to consume the emulated device. see *https://bitbucket.org/crowdarautomation/mobile-docker-framework/*
 
+##Steps:
+1. Clone example test source project     
+	```git clone https://bitbucket.org/crowdarautomation/mobilecucumberexampletestsproject.git```   
 
-5. esperar a que los contenedores docker esten andando con el siguiente comando   
-
-     ```docker container ps```
-
-    el estado de todos los contenedores debe quedar en *healthy*  
-
-6. una vez levantado el stack hay que correr el proyecto de ejemplo con el siguiente comando   
-
+2. Run tests from project root location    
     ```mvn clean -P Stack test```  
-
-
-7. Deberia empezar a correr el proyecto, y podriamos ver los novnc en http://localhost:6080/ y en http://localhost:6082/
-
-8. Al finalizar la corrida podriamos ver el reporte en html generado para extent en la carpeta  **appiumcucumberexampleproject/target/cucumber-report**
 	
-	
-##Troubleshooting	
-docker exec -it [CONTAINER-NAME] tail -f /var/log/supervisor/docker-android.stdout.log
+3. You can view the interaction between tests and emulated device by accesing at http://localhost:6080/
+
+4. When the execution has finished, the output report can be accessed at **[PROJECT_ROOT]/target/cucumber-report**
 	
 	
 		
