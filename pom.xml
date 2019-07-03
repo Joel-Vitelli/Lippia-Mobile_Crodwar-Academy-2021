@@ -1,16 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.crowdar</groupId>
-        <artifactId>Crowd-Root-Framework</artifactId>
-        <version>1.6</version>
-    </parent>
     
     <artifactId>Example-Cucumber-Crowdar</artifactId>
     <url>http://maven.apache.org</url>
     <packaging>jar</packaging>
     <name>Example-Cucumber-Crowdar</name>
     <version>1.0.0</version>
+
+    <parent>
+        <groupId>com.crowdar</groupId>
+        <artifactId>Crowd-Root-Framework</artifactId>
+        <version>1.6</version>
+    </parent>
 
     <properties>
         <crowd.project.name>Example-Cucumber-Crowdar</crowd.project.name>
@@ -79,4 +80,24 @@
             </plugin>
         </plugins>
     </build>
+    
+    <repositories>
+    	<repository>
+            <id>atlassian-repo</id>
+            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+        </repository>  
+
+    	<repository>
+            <id>atlassian-pack</id>
+            <url>https://packages.atlassian.com/maven-public/</url>
+        </repository>  
+        
+        
+		<repository>
+			<id>crowdarRepo</id>
+			<name>crowdar-repository</name>
+			<url>http://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
+		</repository>
+	</repositories>
+	
 </project>
