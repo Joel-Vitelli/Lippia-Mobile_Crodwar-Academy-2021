@@ -14,7 +14,7 @@
 
 ##Pre Step:   
 	
-- Start "Mobile Docker framework" to consume the emulated device. see *https://bitbucket.org/crowdarautomation/mobile-docker-framework/*
+- Start "Mobile Docker framework" to consume the emulated device. see *https://bitbucket.org/crowdarautomation/mobile-sandbox/*
 
 ##Steps:
 1. Clone example test source project     
