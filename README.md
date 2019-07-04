@@ -18,7 +18,7 @@
 
 ##Steps:
 1. Clone example test source project     
-	```git clone https://bitbucket.org/crowdarautomation/mobilecucumberexampletestsproject.git```   
+	```git clone https://bitbucket.org/crowdarautomation/lippia-mobile-example-project.git```   
 
 2. Run tests from project root location    
     ```mvn clean -P Stack test```  
