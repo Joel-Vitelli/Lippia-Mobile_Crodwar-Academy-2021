@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <artifactId>Example-Cucumber-Crowdar</artifactId>
+     <artifactId>Lippia-mobile-example-project</artifactId>
     <url>http://maven.apache.org</url>
     <packaging>jar</packaging>
-    <name>Example-Cucumber-Crowdar</name>
+    <name>Lippia-mobile-example-project</name>
     <version>1.0.0</version>
 
     <parent>
@@ -14,7 +14,7 @@
     </parent>
 
     <properties>
-        <crowd.project.name>Example-Cucumber-Crowdar</crowd.project.name>
+        <crowd.project.name>Lippia-mobile-example-project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <crowdar.cucumber.filter>@Smoke</crowdar.cucumber.filter>
         <cucumber.runner>testngParallel.xml</cucumber.runner>
