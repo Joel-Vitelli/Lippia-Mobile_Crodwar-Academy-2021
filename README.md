@@ -1,16 +1,10 @@
-#Sample test project with Lippia 1.6 ([lippia.io])
+#Lippia Mobile test project 
 
 ##Purpose: 
 The following project has the purpose of demonstrate and let test automation developers to 
 to test a Mobile App using Lippia Automation Framework and Docker Android stack https://github.com/budtmo/docker-android, based on Budi Utomo Docker Android project.
 
-
-
-
-
-
-
-
+![Lippia Architecture Mobile](https://bitbucket.org/crowdarautomation/lippia-mobile-example-project/src/master/arquitecture-mobile.png)
 
 
 ##Requirements :
