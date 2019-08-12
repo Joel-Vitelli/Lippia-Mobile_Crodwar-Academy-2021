@@ -6,6 +6,11 @@ to test a Mobile App using Lippia Automation Framework and Docker Android stack 
 
 ![Lippia Architecture Mobile](https://bitbucket.org/crowdarautomation/lippia-mobile-example-project/raw/f3158fdbfe95d326ed5b386f13432d8e48602cb0/architecture-mobile.png)
 
+##Scenarios: 
+The Scenarios can be written using BDD metodology. This project includes Cucumber as BDD. On each declared step you can insert the calls defined from service classes
+
+![Lippia Scenarios Mobile](https://bitbucket.org/crowdarautomation/lippia-mobile-example-project/raw/3fa624501f0109f4d1db2f46ebdc2c512aeaedd4/gherkin.png)
+
 
 ##Requirements :
 - git client   
