@@ -27,8 +27,8 @@ To start the containers, simply run the following command from terminal:
 ```
 $ sudo apkDirectory=./sample_apk docker-compose up
 ```
- > This command, will start download the images needed to build all the containers and start them. It takes a while to download the images depending on your internet connection.
- > You must to set apkDirectory as parametter
+ > This command, will start download the images needed to build all the containers and start them. It takes a while to download the images depending on your internet connection.  
+ > You must to set apkDirectory as parametter, in this case is hosted on ./sample_apk
 
 ```
 Creating network "lippia-mobile-sample-project_default" with the default driver
@@ -187,13 +187,13 @@ mvn clean test
 
 ***
 
-### Report executing by command line
+### View the generated report by running from the command line
 you can view this report by accesing to:
 
 - `[WORKSPACE_LOCATION]/Lippia-mobile-sample-project/target/cucumber-report/mobile_sample.html`
 > "With each job build the report file will be replaced"
 
-![Lippia Extent Report](/docs/img/reporteMobile.png)
+![Lippia Extent Report](/docs/img/report_mobile.png)
   
 
 ***
@@ -213,8 +213,8 @@ Enter Jenkins console http://localhost:8080 with the following credentials
 
 ***
 
-### Reports
-you can view this report by accesing to:
+### View the generated report by running from Jenkins
+you can view all genenerated reports by jenkins by accesing to:
 
 - `http://localhost:8081`
   
