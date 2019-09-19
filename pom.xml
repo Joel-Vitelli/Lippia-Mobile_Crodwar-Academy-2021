@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <artifactId>Lippia-mobile-example-project</artifactId>
     <url>http://maven.apache.org</url>
     <packaging>jar</packaging>
@@ -26,7 +26,7 @@
         <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
         <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport</crowdar.cucumber.option>
     </properties>
-    
+
     <profiles>
         <profile>
             <id>Stack</id>
@@ -38,10 +38,11 @@
                 <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
                 <crowdar.extent.environment>QA</crowdar.extent.environment>
                 <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+                <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
             </properties>
         </profile>
     </profiles>
-    
+
     <dependencies>
         <dependency>
                 <groupId>com.crowdar.lippia</groupId>
@@ -49,7 +50,7 @@
                 <version>1.6.6</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <filters>
             <filter>src/main/resources/cucumber.properties</filter>
@@ -67,13 +68,13 @@
             </plugin>
         </plugins>
     </build>
-    
-    <repositories>     
+
+    <repositories>
 		<repository>
 			<id>crowdarRepo</id>
 			<name>crowdar-repository</name>
 			<url>http://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
 		</repository>
 	</repositories>
-	
+
 </project>
