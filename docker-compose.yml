@@ -4,8 +4,18 @@
 version: "2.2"
 
 services:
+  jenkins-mobile_apk:
+    image: crowdar/jenkinsbo:demoweb
+    privileged: true
+    ports:
+      - 8080:8080
+      - 50000:50000
+    # Change path of apk that you want to test. I use sample_apk that I provide in folder "example"
+    volumes:
+      - ./docker/jenkins_home:/var/jenkins_home
+      
   # Selenium hub
-  selenium_hub:
+  selenium_hub-mobile-apk:
     image: selenium/hub:3.14.0-curium
     ports:
       - 4444:4444
@@ -39,7 +49,7 @@ services:
     # Increase scale number if needed
     scale: 1
     depends_on:
-      - selenium_hub
+      - selenium_hub-mobile-apk
     ports:
       - 6080:6080
     # Change path of apk that you want to test. I use sample_apk that I provide in folder "example"
@@ -50,5 +60,5 @@ services:
       - DEVICE=Samsung Galaxy S7
       - CONNECT_TO_GRID=true
       - APPIUM=true
-      - SELENIUM_HOST=selenium_hub
+      - SELENIUM_HOST=selenium_hub-mobile-apk
       - AUTO_RECORD=true
