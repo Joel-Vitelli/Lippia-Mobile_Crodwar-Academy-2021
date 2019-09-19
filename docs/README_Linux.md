@@ -9,7 +9,8 @@
 
 # Getting started
  [Download]: <https://github.com/Crowdar/Lippia-mobile-sample-project/archive/master.zip>
-- [Download] and unzip the source repository for this guide, or clone it using Git:
+- [Download] and unzip the source repository for this guide  
+   or clone it using Git:  
     ``` $ git clone https://github.com/Crowdar/Lippia-mobile-sample-project.git ```
 - Go to root directory  
     ``` $ cd Lippia-mobile-sample-project ```
