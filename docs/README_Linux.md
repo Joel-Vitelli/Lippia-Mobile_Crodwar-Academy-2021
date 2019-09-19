@@ -167,11 +167,11 @@ After starting the stack you can see  and selenium grid following url:
 
 Selenium Grid: http://localhost:4444/grid/console
 
-![grid_console](/docs/img/Grid_Console.png)
+![grid_console](/docs/img/grid_console.png)
 
 Emulated Android device novnc: http://localhost:6080
 
-![dockerAndroidNovnc](/docs/img/dockeAndroidNovnc.png)
+![dockerAndroidNovnc](/docs/img/mobile_emulator.png)
 
 ***
 #### Now you be able to consume the solution and start running tests.
@@ -193,7 +193,7 @@ you can view this report by accesing to:
 - `[WORKSPACE_LOCATION]/Lippia-mobile-sample-project/target/cucumber-report/mobile_sample.html`
 > "With each job build the report file will be replaced"
 
-![Lippia Extent Report](/docs/img/reporteExtent.png)
+![Lippia Extent Report](/docs/img/reporteMobile.png)
   
 
 ***
@@ -217,5 +217,4 @@ Enter Jenkins console http://localhost:8080 with the following credentials
 you can view this report by accesing to:
 
 - `http://localhost:8081`
-
-![Lippia Extent Report](/docs/img/reporteExtent.png)  
+  
