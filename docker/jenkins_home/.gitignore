@@ -11,6 +11,7 @@ war/
 caches
 tools/
 logs/
+fingerprints/
 
 userContent/
 workspace/
