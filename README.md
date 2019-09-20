@@ -1,40 +1,166 @@
-# Lippia Mobile test project 
+# Lippia Mobile test project
 
-## Purpose: 
-The following project has the purpose of demonstrate and let test automation developers to 
+## Purpose:
+The following project has the purpose of demonstrate and let test automation developers to
 to test a Mobile App using Lippia Automation Framework and Docker Android stack https://github.com/budtmo/docker-android, based on Budi Utomo Docker Android project.
 
-![Lippia Architecture Mobile](/docs/img/architecture-mobile.png)
+***
 
-##Scenarios: 
-The Scenarios can be written using BDD metodology. This project includes Cucumber as BDD. On each declared step you can insert the calls defined from service classes
+## Docker stack
 
-![Lippia Scenarios Mobile](/docs/img/gherkin.png)
+The following project includes the basic Docker Lippia Containers to run this  web sample project. You can choose to run the code from your favourite IDE, run from console or from Jenkins using the Docker Stack.
+To install and start a local instalation with Docker containers go to **Getting started** at the end of this guide.
+
+![Lippia Extent Report](docs/img/architecture-mobile.png)
+
+## Project structure
+
+A typical Lippia Test Automation project usually looks like this
+
+```
+	.
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── crowdar
+│   │           └── examples
+│   │               ├── pages
+│   │               │   ├── ApiDemoHome.java
+│   │               └── steps
+│   │                   └── ApkApiDemoSteps.java
+│   └── resources
+│       ├── config.properties
+│       └── cucumber.properties
+└── test
+    ├── java
+    │   ├── CrowdTestNgParallelRunner.java
+    │   ├── CrowdTestNgRunner.java
+    │   └── com
+    │       └── crowdar
+    │           └── Hooks.java
+    └── resources
+        └── features
+            └── ApiDemos.feature
+```
+
+Folder's description:
+
+|Path   |Description    |
+|-------|----------------|
+|main\java\\...\examples\pages\\\*.java|Folder with all the **PageObjects** matching steps with java code|
+|main\java\\...\examples\steps\\\*Steps.java|Folder with all the **steps** wich match with Gherkin Test Scenarios |
+|test\resources\features\\\*.feature|Folder with all the **feature files** containing **Test Scenarios** and **Sample Data** |
+|main\resources|Folder with all configuration needed to run Lippia |
+
+In this example, *ApiDemos* is the Apk the framework will interact with.
+The **steps** defined in *ApkApiDemoSteps.java* to execute the *Test Scenarios* defined in Gherkin language.
 
 
-## Requirements :
-- git client   
-     https://www.atlassian.com/git/tutorials/install-git
-	 
-- JDK 8 	    
-	  https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html   
-	  https://openjdk.java.net/install/   
-	 
-+ maven 3   
-	 https://maven.apache.org/download.cgi   
+|File   | Description    |
+|-------|----------------|
+|ApiDemoHome.java   | PageObject: between each element in the aplication *ApiDemoHome* you want to interact with. You need to add one new file for each page you want to navigate in your tests. |
+|ApkApiDemoSteps.java   | StepOpject: Code to support the behaviour of each **step** coded into the feature files for the *ApiDemoHome*. This code executes the interaction between the Framework and the web application and match the steps with the code who run interactions. |
+|ApiDemos.feature| Feature file: Definition of the **Test Scenarios** with all the **steps** written in Cucumber format|
+
+## Page Object    
+***    
+```
+public class ApiDemoHome extends PageBase{
+
+	public ApiDemoHome(SharedDriver driver){
+		super(driver);
+	}
+
+    public String getTitle(){
+    	return getMobileElement(By.xpath("//*[@resource-id='android:id/action_bar']")).findElement(By.xpath("//android.widget.TextView")).getText();
+    }
+
+    private WebElement getMenuElement(String menu){
+    	return getMobileElement(By.xpath("//android.widget.TextView[@content-desc="+"\""+menu+"\""+"]"));
+    }
+
+   public void clickMenuElement(String menu){
+       WebElement element = getMenuElement(menu);
+        element.click();
+   }
+
+}
+```
+
+## Step Object   
+***
+
+```
+public class ApkApiDemoSteps extends PageSteps {
+
+    private ApiDemoHome apiDemoHome;
+
+    public ApkApiDemoSteps(SharedDriver driver){
+        super(driver);
+        apiDemoHome = new ApiDemoHome(driver);
+    }
+
+    @Given("The user opens the '(.*)' application")
+    public void openAplication(String title){
+    	Assert.assertEquals(apiDemoHome.getTitle(), title);
+    }
+
+    @When("The user clicks over '(.*)' menu element")
+    public void executeAction(String menuElementName){
+        apiDemoHome.clickMenuElement(menuElementName);
+    }
+
+    @Then("The user sees the application '(.*)' open")
+    public void openAssertion(String title) throws InterruptedException{
+    	Assert.assertEquals(apiDemoHome.getTitle(), title);
+    }
+}
+```
 
 
-## Pre Step:   
-	
-- Start "Mobile Docker framework" to consume the emulated device. see *https://bitbucket.org/crowdarautomation/mobile-sandbox/*
+## Feature File
+***
 
-## Steps:
-1. Clone example test source project     
-	```git clone https://bitbucket.org/crowdarautomation/lippia-mobile-example-project.git```   
+The Test Scenarios can be written using BDD metodology. This project includes Cucumber as BDD interpreter which is supported by Lippia by default. On each declared step you can insert the calls defined from service classes            
 
-2. Run tests from project root location    
-    ```mvn clean -P Stack test```  
-	
-3. You can view the interaction between tests and emulated device by accesing at http://localhost:6080/
+```
+Feature: As a potential client i want to interact with the mobile application
 
-4. When the execution has finished, the output report can be accessed at **[PROJECT_ROOT]/target/cucumber-report**
+  @Smoke
+  Scenario: The client starts the applicacion ApiDemos accesing to Bouncing Balls
+    Given The user opens the 'API Demos' application
+    When The user clicks over 'Animation' menu element
+    When The user clicks over 'Bouncing Balls' menu element
+    Then The user sees the application 'Animation/Bouncing Balls' open
+
+  @Smoke
+  Scenario: The client starts the applicacion ApiDemos accesing to cloning
+    Given The user opens the 'API Demos' application
+    When The user clicks over 'Animation' menu element
+    When The user clicks over 'Cloning' menu element
+    Then The user sees the application 'Animation/Cloning' open
+
+  @Smoke
+  Scenario: The client starts the applicacion ApiDemos accesing to Multiple Properties
+    Given The user opens the 'API Demos' application
+    When The user clicks over 'Animation' menu element
+    When The user clicks over 'Multiple Properties' menu element
+    Then The user sees the application 'Animation/Multiple Properties' open
+```
+
+
+### Reports
+
+By default Lippia expose Test results using Extent Report Community Edition (https://github.com/extent-framework)
+In order to see test results this project includes extent report that show you the result of each run. This kind of reporting is really easy to understand.
+You just need to open it and navigate for all the report page to earn the much information as you can for every run.
+
+![Lippia Extent Report](/docs/img/report_mobile.png)
+
+* * *
+* * *
+
+# Getting started
+
+- Mobile emulated solution is only available for Linux user
+    [`Getting started - Linux User`](docs/README_Linux.md)
