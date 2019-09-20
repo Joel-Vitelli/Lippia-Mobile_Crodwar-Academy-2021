@@ -1,2 +1,16 @@
 /queue.xml
 /queue.xml.bak
+
+.cache/
+.java/
+.m2/
+
+reportsVolume/
+plugins
+war/
+caches
+tools/
+logs/
+
+userContent/
+workspace/
