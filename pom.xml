@@ -10,7 +10,7 @@
     <parent>
        <groupId>com.crowdar.lippia</groupId>
        <artifactId>root</artifactId>
-       <version>1.6.6</version>
+       <version>1.6.7</version>
     </parent>
 
     <properties>
@@ -28,6 +28,20 @@
     </properties>
 
     <profiles>
+        <profile>
+            <id>Local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
+                <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
+                <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
+                <crowdar.extent.environment>QA</crowdar.extent.environment>
+                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+                <crowdar.gridhub>http://127.0.0.1:4723</crowdar.gridhub>
+            </properties>
+        </profile>
         <profile>
             <id>Stack</id>
             <activation>
@@ -47,7 +61,7 @@
         <dependency>
                 <groupId>com.crowdar.lippia</groupId>
                 <artifactId>core</artifactId>
-                <version>1.6.6</version>
+                <version>1.6.7</version>
         </dependency>
     </dependencies>
 
