@@ -10,24 +10,40 @@
     <parent>
        <groupId>com.crowdar.lippia</groupId>
        <artifactId>root</artifactId>
-       <version>1.6.6</version>
+       <version>1.6.7</version>
     </parent>
 
     <properties>
         <crowd.project.name>Lippia-mobile-example-project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <crowdar.cucumber.filter>@Smoke</crowdar.cucumber.filter>
-        <cucumber.runner>testngParallel.xml</cucumber.runner>
+        <cucumber.runner>testng.xml</cucumber.runner>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
         <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
         <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
         <crowdar.extent.environment>Local</crowdar.extent.environment>
         <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-        <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
         <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags ~@Ignore --plugin com.crowdar.report.CucumberExtentReport</crowdar.cucumber.option>
     </properties>
 
     <profiles>
+        <profile>
+            <id>Local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
+                <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
+                <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
+                <crowdar.extent.environment>QA</crowdar.extent.environment>
+                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
+                <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
+                <crowdar.avd></crowdar.avd>
+                <crowdar.workspaceLocation>/home/user/workspace/Lippia-mobile-sample-project</crowdar.workspaceLocation>
+                <crowdar.deviceName>Xperia XA1</crowdar.deviceName>
+            </properties>
+        </profile>
         <profile>
             <id>Stack</id>
             <activation>
@@ -39,6 +55,10 @@
                 <crowdar.extent.environment>QA</crowdar.extent.environment>
                 <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
                 <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
+                <cucumber.runner>testngParallel.xml</cucumber.runner>
+                <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
+                <crowdar.workspaceLocation>/root/tmp</crowdar.workspaceLocation>
+                <crowdar.deviceName>Android Emulator</crowdar.deviceName>
             </properties>
         </profile>
     </profiles>
@@ -47,7 +67,7 @@
         <dependency>
                 <groupId>com.crowdar.lippia</groupId>
                 <artifactId>core</artifactId>
-                <version>1.6.6</version>
+                <version>1.6.7</version>
         </dependency>
     </dependencies>
 
