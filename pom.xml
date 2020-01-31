@@ -48,16 +48,25 @@
             </properties>
         </profile>
         <profile>
-            <id>Stack</id>
-            <activation>
-            </activation>
+            <id>StackJenkins</id>
             <properties>
                 <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
                 <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
                 <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
-                <crowdar.extent.environment>QA</crowdar.extent.environment>
-                <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-                <crowdar.gridhub>http://127.0.0.1:4444/wd/hub</crowdar.gridhub>
+                  <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
+                <cucumber.runner>testngParallel.xml</cucumber.runner>
+                <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
+                <crowdar.workspaceLocation>/root/tmp</crowdar.workspaceLocation>
+                <crowdar.deviceName>Android Emulator</crowdar.deviceName>
+            </properties>
+        </profile>
+        <profile>
+            <id>StackLocal</id>
+            <properties>
+                <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
+                <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
+                <crowdar.extent.host.name>Stack</crowdar.extent.host.name>
+                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
                 <cucumber.runner>testngParallel.xml</cucumber.runner>
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
                 <crowdar.workspaceLocation>/root/tmp</crowdar.workspaceLocation>

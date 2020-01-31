@@ -8,7 +8,7 @@ pipeline {
 
     stage('Build') {
         steps {
-          sh 'mvn clean -P Stack test'
+          sh 'mvn clean -P StackJenkins test'
         }
       }
 
