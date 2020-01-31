@@ -57,7 +57,7 @@
                 <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
                 <crowdar.extent.environment>QA</crowdar.extent.environment>
                 <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
+                <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
                 <cucumber.runner>testngParallel.xml</cucumber.runner>
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
                 <crowdar.workspaceLocation>/root/tmp</crowdar.workspaceLocation>
