@@ -27,6 +27,7 @@
         <crowdar.mobile.autoGrantPermissions>true</crowdar.mobile.autoGrantPermissions>
         <crowdar.mobile.unicodeKeyboard>true</crowdar.mobile.unicodeKeyboard>
         <crowdar.mobile.resetKeyboard>true</crowdar.mobile.resetKeyboard>
+        <crowdar.projectType>MOBILE_ANDROID_APK</crowdar.projectType>
     </properties>
 
     <profiles>
@@ -71,6 +72,18 @@
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
                 <crowdar.workspaceLocation>/root/tmp</crowdar.workspaceLocation>
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
+            </properties>
+        </profile>
+    	<profile>
+            <id>BrowserStack</id>
+            <properties>
+                <crowdar.extent.host.name>Stack</crowdar.extent.host.name>
+                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
+                <cucumber.runner>testngParallel.xml</cucumber.runner>
+                
+                <crowdar.projectType>GENERIC</crowdar.projectType>
+                <crowdar.driver.capabilities.json_path>src/main/resources/platformCapabilities.json</crowdar.driver.capabilities.json_path>
+                
             </properties>
         </profile>
     </profiles>
