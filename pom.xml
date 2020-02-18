@@ -28,6 +28,7 @@
         <crowdar.mobile.unicodeKeyboard>true</crowdar.mobile.unicodeKeyboard>
         <crowdar.mobile.resetKeyboard>true</crowdar.mobile.resetKeyboard>
         <crowdar.projectType>MOBILE_ANDROID_APK</crowdar.projectType>
+        <crowdar.remoteDriverType></crowdar.remoteDriverType>
     </properties>
 
     <profiles>
@@ -77,12 +78,13 @@
     	<profile>
             <id>BrowserStack</id>
             <properties>
-                <crowdar.extent.host.name>Stack</crowdar.extent.host.name>
-                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
+                <crowdar.extent.host.name>BrowserStack</crowdar.extent.host.name>
                 <cucumber.runner>testngParallel.xml</cucumber.runner>
                 
                 <crowdar.projectType>GENERIC</crowdar.projectType>
-                <crowdar.driver.capabilities.json_path>src/main/resources/platformCapabilities.json</crowdar.driver.capabilities.json_path>
+                <crowdar.remoteDriverType>io.appium.java_client.android.AndroidDriver</crowdar.remoteDriverType>
+                <crowdar.driver.capabilities.json_path>src/main/resources/capabilities/androidCapabilities.json</crowdar.driver.capabilities.json_path>
+                <crowdar.driverhub></crowdar.driverhub><!-- pasar valor por -Dcrowdar.gridhub=https://user:keyvalue@hub-cloud.browserstack.com/wd/hub -->
                 
             </properties>
         </profile>
