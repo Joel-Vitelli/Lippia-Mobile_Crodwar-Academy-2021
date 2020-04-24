@@ -25,11 +25,20 @@ A typical Lippia Test Automation project usually looks like this
 │   │       └── crowdar
 │   │           └── examples
 │   │               ├── pages
-│   │               │   ├── ApiDemoHome.java
+│   │               │   └── ApiDemoHome.java
+|   |		    |	└── HomePage.java
+|   |		    |	└── LoginPage.java
+|   |		    |	└── SignUpPage.java
 │   │               └── steps
 │   │                   └── ApkApiDemoSteps.java
+│   │                   └── HomeSteps.java
+│   │                   └── LoginSteps.java
+│   │                   └── SignUpSteps.java
 │   └── resources
-│       ├── config.properties
+|	├── capabilities
+|	|   └── androidCapabilities
+|	|   └── browserStackCapabilities	
+│       └── config.properties
 │       └── cucumber.properties
 └── test
     ├── java
@@ -41,6 +50,7 @@ A typical Lippia Test Automation project usually looks like this
     └── resources
         └── features
             └── ApiDemos.feature
+	    └── Demo.feature
 ```
 
 Folder's description:
@@ -51,6 +61,7 @@ Folder's description:
 |main\java\\...\examples\steps\\\*Steps.java|Folder with all the **steps** wich match with Gherkin Test Scenarios |
 |test\resources\features\\\*.feature|Folder with all the **feature files** containing **Test Scenarios** and **Sample Data** |
 |main\resources|Folder with all configuration needed to run Lippia |
+|main\resources\capabilities\\\*json|Folder with all the capabilities availables for the driver |
 
 In this example, *ApiDemos* is the Apk the framework will interact with.
 The **steps** defined in *ApkApiDemoSteps.java* to execute the *Test Scenarios* defined in Gherkin language.
@@ -148,6 +159,22 @@ Feature: As a potential client i want to interact with the mobile application
     Then The user sees the application 'Animation/Multiple Properties' open
 ```
 
+
+## Capabilities
+***
+
+The capabilities are located in a json file. This file is mandatory. The values that are inside "{{}}" are replaced with the values located in config.properties and in that file, the key must be equal to the property to replace. For example, in config.properties: deviceName=Android ; Avd property must be empty in case of using a real device.
+
+```
+{
+  "deviceName": "{{deviceName}}",
+  "app": "{{app}}",
+  "platformName": "Android",
+  "avd": "{{avd}}",
+  "resetKeyboard": "true",
+  "unicodeKeyboard": "true"
+}
+```
 
 ### Reports
 
