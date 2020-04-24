@@ -25,11 +25,20 @@ A typical Lippia Test Automation project usually looks like this
 │   │       └── crowdar
 │   │           └── examples
 │   │               ├── pages
-│   │               │   ├── ApiDemoHome.java
+│   │               │   └── ApiDemoHome.java
+|   |		    |	└── HomePage.java
+|   |		    |	└── LoginPage.java
+|   |		    |	└── SignUpPage.java
 │   │               └── steps
 │   │                   └── ApkApiDemoSteps.java
+│   │                   └── HomeSteps.java
+│   │                   └── LoginSteps.java
+│   │                   └── SignUpSteps.java
 │   └── resources
-│       ├── config.properties
+|	├── capabilities
+|	|   └── androidCapabilities
+|	|   └── browserStackCapabilities	
+│       └── config.properties
 │       └── cucumber.properties
 └── test
     ├── java
@@ -41,6 +50,7 @@ A typical Lippia Test Automation project usually looks like this
     └── resources
         └── features
             └── ApiDemos.feature
+	    └── Demo.feature
 ```
 
 Folder's description:
