@@ -38,7 +38,7 @@
                 <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
                 <cucumber.runner>testng.xml</cucumber.runner>
                 <crowdar.avd></crowdar.avd>
-                <crowdar.appLocation>C:\\\\workspace\\\\crowdar\\\\Lippia-mobile-sample-project\\\\sample_apk\\\\lippia.apk</crowdar.appLocation>
+                <crowdar.appLocation>C:\\\\workspace\\\\crowdar\\\\Lippia-mobile-sample-project\\\\sample_apk\\\\ApiDemos.apk</crowdar.appLocation>
                 <crowdar.deviceName>Redmi Note 8 Pro</crowdar.deviceName>
             </properties>
         </profile>
