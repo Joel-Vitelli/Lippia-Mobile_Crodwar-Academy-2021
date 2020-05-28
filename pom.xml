@@ -15,7 +15,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <crowdar.cucumber.filter>@Smoke</crowdar.cucumber.filter>
+        <crowdar.cucumber.filter>@Demo</crowdar.cucumber.filter>
         <cucumber.runner>testngParallel.xml</cucumber.runner>
         <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
         <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
@@ -37,9 +37,9 @@
             <properties>
                 <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
                 <cucumber.runner>testng.xml</cucumber.runner>
-                <crowdar.avd></crowdar.avd>
-                <crowdar.appLocation>C:\\\\workspace\\\\crowdar\\\\Lippia-mobile-sample-project\\\\sample_apk\\\\ApiDemos.apk</crowdar.appLocation>
-                <crowdar.deviceName>Redmi Note 8 Pro</crowdar.deviceName>
+                <crowdar.avd>Pixel3</crowdar.avd>
+                <crowdar.appLocation>C:\\\\workspace\\\\crowdar\\\\Lippia-mobile-sample-project\\\\sample_apk\\\\lippia.apk</crowdar.appLocation>
+                <crowdar.deviceName>Pixel3</crowdar.deviceName>
             </properties>
         </profile>
         <profile>
@@ -48,7 +48,7 @@
                 <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
                   <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
-                <crowdar.appLocation>/root/tmp</crowdar.appLocation>
+                <crowdar.appLocation>/root/tmp/sample_apk/lippia.apk</crowdar.appLocation>
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
             </properties>
         </profile>
@@ -58,7 +58,7 @@
                 <crowdar.extent.host.name>Stack</crowdar.extent.host.name>
                 <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
-                <crowdar.appLocation>/root/tmp</crowdar.appLocation>
+                <crowdar.appLocation>/root/tmp/sample_apk/lippia.apk</crowdar.appLocation>
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
             </properties>
         </profile>
