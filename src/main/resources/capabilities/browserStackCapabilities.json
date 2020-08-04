@@ -1,11 +1,13 @@
 {
-	"browserName": "BrowserStack",
-	"device": "Samsung Galaxy S8 Plus",
-	"os_version": "9.0",
-	"project": "Mobile sample Project",
-    "app": "bs://fac47c0568f3a0c0dfc125d154a11653a12d0ce4",
-    "build": "Mobile S8 Build",
-    "name": "Bstack-[Java] Mobile Sample Test",
-    "resetKeyboard": "true", 
-    "unicodeKeyboard": "true"
-} 
+  "browserName": "BrowserStack",
+  "device": "{{deviceName}}",
+  "os_version": "{{os.version}}",
+  "project": "Mobile sample Project",
+  "app": "{{app}}",
+  "build": "Mobile {{deviceName}} Build",
+  "name": "Bstack-[Java] Mobile Sample Test",
+  "resetKeyboard": "true",
+  "unicodeKeyboard": "true",
+  "autoGrantPermissions": "true",
+  "autoAcceptAlerts": "true"
+}
