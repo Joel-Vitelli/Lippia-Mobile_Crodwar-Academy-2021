@@ -84,7 +84,7 @@
                 <crowdar.os.version>9.0</crowdar.os.version>
                 <crowdar.appLocation>bs://7e498849c478c31cba239bb5edcd0a73cd3c3fed</crowdar.appLocation>
                 <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/browserStackCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
-                <crowdar.gridhub>https://juanmanuelspolet1:g3bXjugpJqndyoXa1STa@hub-cloud.browserstack.com/wd/hub</crowdar.gridhub><!-- pasar valor por -Dcrowdar.gridhub=https://user:keyvalue@hub-cloud.browserstack.com/wd/hub -->
+                <crowdar.gridhub>https://user:access_token@hub-cloud.browserstack.com/wd/hub</crowdar.gridhub>
             </properties>
         </profile>
     </profiles>
