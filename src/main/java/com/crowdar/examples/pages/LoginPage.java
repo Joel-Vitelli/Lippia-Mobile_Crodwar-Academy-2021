@@ -12,37 +12,31 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class LoginPage extends PageBaseMobile {
 
-    private final String EMAIL_ADDRESS_INPUT_ACCESSIBILITY_ID = "emailAddressInputLogin";
-    private final String PASSWORD_INPUT_ACCESSIBILITY_ID = "passwordInputLogin";
-    private final String SIGN_IN_BUTTON_ACCESSIBILITY_ID = "signInButtonLogin";
-    private final String SIGN_UP_BUTTON_ACCESSIBILITY_ID = "signUpButtonLogin";
-
     public LoginPage(RemoteWebDriver driver) {
         super(driver);
-        this.url = "";
     }
 
     public void setEmailAddress(String emailAddress) {
-       completeField(MobileBy.AccessibilityId(EMAIL_ADDRESS_INPUT_ACCESSIBILITY_ID), emailAddress);
+        setInput("emailInput", emailAddress);
     }
 
     public void setPassword(String password) {
-        completeField(MobileBy.AccessibilityId(PASSWORD_INPUT_ACCESSIBILITY_ID), password);
+        setInput("passwordInput", password);
     }
 
     public void clickSignInButton() {
-        clickElement(MobileBy.AccessibilityId(SIGN_IN_BUTTON_ACCESSIBILITY_ID));
+        click("signInButton");
     }
 
     public void clickSignUpButton() {
-        clickElement(MobileBy.AccessibilityId(SIGN_UP_BUTTON_ACCESSIBILITY_ID));
+        click("signUpButton");
     }
 
     public void waitLoginPageAppears(){
-        waitForElementVisibility(MobileBy.AccessibilityId(SIGN_UP_BUTTON_ACCESSIBILITY_ID));
+        waitVisibility("signInButton");
     }
 
     public boolean isLoginPageVisible(){
-        return isElementVisible(MobileBy.AccessibilityId(SIGN_IN_BUTTON_ACCESSIBILITY_ID));
+        return isVisible("signInButton");
     }
 }
