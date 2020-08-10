@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class LoginPage extends PageBaseMobile {
+    private final String SIGN_IN_BUTTON_LOCATOR = "signInButton" + DriverManager.getName();
 
     public LoginPage(RemoteWebDriver driver) {
         super(driver);
@@ -25,7 +26,7 @@ public class LoginPage extends PageBaseMobile {
     }
 
     public void clickSignInButton() {
-        click("signInButton");
+        click(SIGN_IN_BUTTON_LOCATOR);
     }
 
     public void clickSignUpButton() {
@@ -33,10 +34,10 @@ public class LoginPage extends PageBaseMobile {
     }
 
     public void waitLoginPageAppears(){
-        waitVisibility("signInButton");
+        waitVisibility(SIGN_IN_BUTTON_LOCATOR);
     }
 
     public boolean isLoginPageVisible(){
-        return isVisible("signInButton");
+        return isVisible(SIGN_IN_BUTTON_LOCATOR);
     }
 }
