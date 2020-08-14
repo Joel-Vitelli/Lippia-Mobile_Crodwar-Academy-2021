@@ -24,17 +24,26 @@ A typical Lippia Test Automation project usually looks like this
 │   │   └── com
 │   │       └── crowdar
 │   │           └── examples
+│   │               ├── constants
+|   |		    |	|   |   |   |   └── HomeConstants.java
+|   |		    |	|   |   |   |   └── LoginConstants.java
+|   |		    |	|   |   |   |   └── SignUpConstants.java
+│   │               ├── services
+|   |		    |	|   |   |   |   └── HomeService.java
+|   |		    |	|   |   |   |   └── LoginService.java
+|   |		    |	|   |   |   |   └── SignUpService.java
 │   │               ├── pages
 │   │               │   └── ApiDemoHome.java
-|   |		    |	└── HomePage.java
-|   |		    |	└── LoginPage.java
-|   |		    |	└── SignUpPage.java
 │   │               └── steps
 │   │                   └── ApkApiDemoSteps.java
 │   │                   └── HomeSteps.java
 │   │                   └── LoginSteps.java
 │   │                   └── SignUpSteps.java
 │   └── resources
+|   |	|   └── locators
+|   |	|   |   └── LoginView.properties
+|   |	|   |   └── HomeView.properties
+|   |	|   |   └── SignUpView.properties
 |	├── capabilities
 |	|   └── androidCapabilities
 |	|   └── browserStackCapabilities	
@@ -58,7 +67,8 @@ Folder's description:
 |Path   |Description    |
 |-------|----------------|
 |main\java\\...\examples\pages\\\*.java|Folder with all the **PageObjects** matching steps with java code|
-|main\java\\...\examples\steps\\\*Steps.java|Folder with all the **steps** wich match with Gherkin Test Scenarios |
+|main\java\\...\examples\steps\\\*Steps.java|Folder with all the **steps** which match with Gherkin Test Scenarios |
+|main\resources\locators\\\*.properties|Folder with all the **locators** which match with properties |
 |test\resources\features\\\*.feature|Folder with all the **feature files** containing **Test Scenarios** and **Sample Data** |
 |main\resources|Folder with all configuration needed to run Lippia |
 |main\resources\capabilities\\\*json|Folder with all the capabilities availables for the driver |
@@ -73,8 +83,9 @@ The **steps** defined in *ApkApiDemoSteps.java* to execute the *Test Scenarios* 
 |ApkApiDemoSteps.java   | StepOpject: Code to support the behaviour of each **step** coded into the feature files for the *ApiDemoHome*. This code executes the interaction between the Framework and the web application and match the steps with the code who run interactions. |
 |ApiDemos.feature| Feature file: Definition of the **Test Scenarios** with all the **steps** written in Cucumber format|
 
-## Page Object    
+## Page Object @DEPRECATED
 ***    
+This is replaced by Services
 ```
 public class ApiDemoHome extends PageBase{
 
@@ -98,34 +109,66 @@ public class ApiDemoHome extends PageBase{
 }
 ```
 
+## Services
+***    
+
+(Services) contains the business logic, we call the locators hardcoded here or, in this case,located in the constants class, and then, the action we need to do.
+
+```
+public class LoginService {
+
+    public static void doLogin(String email, String password){
+        MobileActionManager.setInput(LoginConstants.EMAIL_INPUT_LOCATOR, email);
+        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT_LOCATOR, password);
+        MobileActionManager.click(LoginConstants.SIGN_IN_BUTTON_LOCATOR + DriverManager.getName());
+    }
+
+    public static void isViewLoaded(){
+        MobileActionManager.waitVisibility(LoginConstants.SIGN_UP_BUTTON_LOCATOR);
+        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.EMAIL_INPUT_LOCATOR), LoginConstants.VIEW_NOT_DISPLAYED_MESSAGE);
+    }
+}
+
+```
+
 ## Step Object   
 ***
 
+In the steps files we connect the gherkin with java code, and here is the connection with the services, in these classes there should not be logic 
+
 ```
-public class ApkApiDemoSteps extends PageSteps {
+public class LoginSteps extends PageSteps {
 
-    private ApiDemoHome apiDemoHome;
-
-    public ApkApiDemoSteps(SharedDriver driver){
-        super(driver);
-        apiDemoHome = new ApiDemoHome(driver);
+    @Given("The app is loaded correctly")
+    @Then("Login page is displayed")
+    public void isLoginPageVisible() {
+        LoginService.isViewLoaded();
     }
 
-    @Given("The user opens the '(.*)' application")
-    public void openAplication(String title){
-    	Assert.assertEquals(apiDemoHome.getTitle(), title);
+    @When("The user goes to the Sign Up page")
+    public void goToSignUp() {
+        MobileActionManager.click(LoginConstants.SIGN_UP_BUTTON_LOCATOR);
     }
 
-    @When("The user clicks over '(.*)' menu element")
-    public void executeAction(String menuElementName){
-        apiDemoHome.clickMenuElement(menuElementName);
+    @When("The user logs in the application with: (.*), (.*)")
+    public void doLoginProcess(String email, String password) {
+        LoginService.doLogin(email, password);
     }
 
-    @Then("The user sees the application '(.*)' open")
-    public void openAssertion(String title) throws InterruptedException{
-    	Assert.assertEquals(apiDemoHome.getTitle(), title);
-    }
 }
+```
+
+## Locators properties
+***
+
+The locators can be written in .properties file located in src/main/resources/locators For example, to access email input in LoginView.properties we write: loginView.emailInput
+
+```
+emailInput=accessibility_id:emailAddressInputLogin
+passwordInput=accessibility_id:passwordInputLogin
+signInButtonAndroid=accessibility_id:signInButtonLogin
+signInButtonIos=accessibility_id:signInButtonLogin
+signUpButton=accessibility_id:signUpButtonLogin
 ```
 
 
