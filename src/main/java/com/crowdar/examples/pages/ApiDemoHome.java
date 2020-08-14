@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+/**
+ * This class is based in the old format of Page objects. See the package services in the new format.
+ */
 public class ApiDemoHome extends PageBaseMobile {
 
     private final String ACTION_BAR_XPATH = "//*[@resource-id='android:id/action_bar']";

@@ -1,30 +1,31 @@
 package com.crowdar.examples.steps;
 
-import com.crowdar.core.Injector;
 import com.crowdar.core.PageSteps;
-import com.crowdar.examples.pages.HomePage;
-import com.crowdar.examples.pages.LoginPage;
-import cucumber.api.java.en.Given;
+import com.crowdar.core.actions.MobileActionManager;
+import com.crowdar.examples.constants.HomeConstants;
+import com.crowdar.examples.services.HomeService;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 
+/**
+ * This class handles the steps in the features files and connects with the service in case of having business logic.
+ * Otherwise, if it is a simple action, like clicking a button and it has nothing related to business logic, is correct to put here.
+ */
 public class HomeSteps extends PageSteps {
 
     @Then("Home page is displayed")
     public void isHomePageVisible() {
-        Injector._page(HomePage.class).waitHomePageAppears();
-        Assert.assertTrue(Injector._page(HomePage.class).isHomePageVisible(), "Home page is not displayed.");
+        HomeService.isViewLoaded();
     }
 
     @When("The user changes the language")
     public void doChangeLanguage() {
-        Injector._page(HomePage.class).clickChangeLanguageButton();
+        MobileActionManager.click(HomeConstants.CHANGE_LANGUAGE_BUTTON_LOCATOR);
     }
 
     @When("The user log out of the app")
     public void doSignOut() {
-        Injector._page(HomePage.class).clickSignOutButton();
+        MobileActionManager.click(HomeConstants.SIGN_OUT_BUTTON_LOCATOR);
     }
 
 }
