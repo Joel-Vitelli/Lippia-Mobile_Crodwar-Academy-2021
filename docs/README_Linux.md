@@ -1,9 +1,6 @@
 ## Lippia mobile apk sample project - Linux users
 
-## System Requirements :
-+ JDK 8: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html   
-	  https://openjdk.java.net/install/   
-+ Maven 3.X: https://maven.apache.org/download.cgi   
+## System Requirements :  
 + Docker 18.09: https://docs.docker.com/install/linux/docker-ce/ubuntu/
 + Docker compose 1.24: https://docs.docker.com/compose/install/
 
@@ -26,8 +23,10 @@ Through docker compose we configure the following
 To start the containers, simply run the following command from terminal:
 
 ```
-$ sudo apkDirectory=./sample_apk docker-compose up
+$ sudo docker-compose up -d hub
+$ sudo docker-compose up -d samsung_s7_9.0
 ```
+
  > This command, will start download the images needed to build all the containers and start them. It takes a while to download the images depending on your internet connection.  
  > You must to set apkDirectory as parametter, in this case is hosted on ./sample_apk
 
@@ -163,59 +162,123 @@ CONTAINER ID        IMAGE                           COMMAND                  CRE
 1346e5ba56db        selenium/hub:3.14.0-curium      "/opt/bin/entry_poin…"   21 hours ago        Up 21 hours             0.0.0.0:4444->4444/tcp                                      lippia-mobile-sample-project_selenium_hub_1
 ```
 
+
+We have to wait a few second, waiting to start the emulator phone start, like that:
+
+![dockerAndroidNovnc](img/mobile_emulator.png)
+
+
+#### Now you be able to consume the solution and start running tests.
+***
+
+### Run from command line
+To run tests you must be execute
+
+```
+$ sudo docker-compose up lippia
+
+lippia-mobile-sample-project_hub_1 is up-to-date
+Starting lippia-mobile-sample-project_lippia_1 ... done
+Attaching to lippia-mobile-sample-project_lippia_1
+lippia_1          | [INFO] Scanning for projects...
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --------------< io.lippia:Lippia-mobile-example-project >---------------
+lippia_1          | [INFO] Building Lippia-mobile-example-project 1.0.0
+lippia_1          | [INFO] --------------------------------[ jar ]---------------------------------
+lippia_1          | Downloading from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml
+lippia_1          | Downloading from crowdarRepo: https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/io/grpc/grpc-core/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/io/grpc/grpc-core/maven-metadata.xml (2.7 kB at 2.1 kB/s)
+lippia_1          | Downloaded from crowdarRepo: https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/io/grpc/grpc-core/maven-metadata.xml (2.7 kB at 2.0 kB/s)
+lippia_1          | Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/maven-metadata.xml
+lippia_1          | Downloading from crowdarRepo: https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/io/netty/netty-codec-http2/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/maven-metadata.xml (2.7 kB at 7.9 kB/s)
+lippia_1          | Downloaded from crowdarRepo: https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/io/netty/netty-codec-http2/maven-metadata.xml (2.8 kB at 6.3 kB/s)
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] Deleting /opt/workspace/automation/target
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-resources-plugin:2.4:resources (default-resources) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] Using 'UTF-8' encoding to copy filtered resources.
+lippia_1          | [INFO] Copying 8 resources
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] Changes detected - recompiling the module!
+lippia_1          | [INFO] Compiling 12 source files to /opt/workspace/automation/target/classes
+lippia_1          | [INFO] /opt/workspace/automation/src/main/java/com/crowdar/examples/steps/ApkApiDemoSteps.java: Some input files use or override a deprecated API.
+lippia_1          | [INFO] /opt/workspace/automation/src/main/java/com/crowdar/examples/steps/ApkApiDemoSteps.java: Recompile with -Xlint:deprecation for details.
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-resources-plugin:2.4:testResources (default-testResources) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] Using 'UTF-8' encoding to copy filtered resources.
+lippia_1          | [INFO] Copying 2 resources
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] Changes detected - recompiling the module!
+lippia_1          | [INFO] Compiling 1 source file to /opt/workspace/automation/target/test-classes
+lippia_1          | [INFO] 
+lippia_1          | [INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ Lippia-mobile-example-project ---
+lippia_1          | [INFO] 
+lippia_1          | [INFO] -------------------------------------------------------
+lippia_1          | [INFO]  T E S T S
+lippia_1          | [INFO] -------------------------------------------------------
+lippia_1          | [INFO] Running TestSuite
+lippia_1          | 07/09/20 11:50:18 INFO  BasicHook:20 - ------ Starting -----The user starts the application, registers a new user, changes the language, log out of the app and log in to the app.-----
+lippia_1          | 07/09/20 11:50:18 INFO  BasicHook:20 - ------ Starting -----The user starts the application, registers a new user, changes the language, log out of the app and log in to the app.-----
+lippia_1          | SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+lippia_1          | SLF4J: Defaulting to no-operation (NOP) logger implementation
+lippia_1          | SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+lippia_1          | Sep 07, 2020 11:50:36 AM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+lippia_1          | INFO: Detected dialect: W3C
+lippia_1          | 07/09/20 11:51:00 INFO  BasicHook:35 - ------ Ending -----The user starts the application, registers a new user, changes the language, log out of the app and log in to the app.-----
+lippia_1          | 07/09/20 11:51:02 INFO  BasicHook:35 - ------ Ending -----The user starts the application, registers a new user, changes the language, log out of the app and log in to the app.-----
+lippia_1          | Feature: As a potential client i want to interact with the mobile application
+lippia_1          | 
+lippia_1          |   Scenario Outline: The user starts the application, registers a new user, changes the language, log out of the app and log in to the app. # src/test/resources/features/Demo.feature:3
+lippia_1          |     Given The app is loaded correctly
+lippia_1          |     When The user goes to the Sign Up page
+lippia_1          |     And The user registers a new user with: <username>, <email>, <password>
+lippia_1          |     Then Home page is displayed
+lippia_1          |     When The user changes the language
+lippia_1          |     And The user log out of the app
+lippia_1          |     Then Login page is displayed
+lippia_1          |     When The user logs in the application with: <email>, <password>
+lippia_1          |     Then Home page is displayed
+lippia_1          | 
+lippia_1          |     @Demo
+lippia_1          |     Examples: 
+lippia_1          | 
+lippia_1          |   @Demo
+lippia_1          |   Scenario Outline: The user starts the application, registers a new user, changes the language, log out of the app and log in to the app. # src/test/resources/features/Demo.feature:19
+lippia_1          |     Given The app is loaded correctly                                                                                                      # LoginSteps.isLoginPageVisible()
+lippia_1          |     When The user goes to the Sign Up page                                                                                                 # LoginSteps.goToSignUp()
+lippia_1          |     And The user registers a new user with: automation, automation@gmail.com, 123456                                                       # SignUpSteps.doSignUpProcess(String,String,String)
+lippia_1          |     Then Home page is displayed                                                                                                            # HomeSteps.isHomePageVisible()
+lippia_1          |     When The user changes the language                                                                                                     # HomeSteps.doChangeLanguage()
+lippia_1          |     And The user log out of the app                                                                                                        # HomeSteps.doSignOut()
+lippia_1          |     Then Login page is displayed                                                                                                           # LoginSteps.isLoginPageVisible()
+lippia_1          |     When The user logs in the application with: automation@gmail.com, 123456                                                               # LoginSteps.doLoginProcess(String,String)
+lippia_1          |     Then Home page is displayed                                                                                                            # HomeSteps.isHomePageVisible()
+lippia_1          | [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 44.659 s - in TestSuite
+lippia_1          | [INFO] 
+lippia_1          | [INFO] Results:
+lippia_1          | [INFO] 
+lippia_1          | [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+lippia_1          | [INFO] 
+lippia_1          | [INFO] ------------------------------------------------------------------------
+lippia_1          | [INFO] BUILD SUCCESS
+lippia_1          | [INFO] ------------------------------------------------------------------------
+lippia_1          | [INFO] Total time:  53.001 s
+lippia_1          | [INFO] Finished at: 2020-09-07T11:51:03Z
+lippia_1          | [INFO] ------------------------------------------------------------------------
+lippia-mobile-sample-project_lippia_1 exited with code 0
+
+```
 ## Check Docker stack is up and running
 After starting the stack you can see  and selenium grid following url:
 
 Selenium Grid: http://localhost:4444/grid/console
 
-![grid_console](/docs/img/grid_console.png)
+![gridConsole](img/grid_console.png)
 
 Emulated Android device novnc: http://localhost:6080
 
-![dockerAndroidNovnc](/docs/img/mobile_emulator.png)
-
-***
-#### Now you be able to consume the solution and start running tests.
-***
-
-### Run from command line
-
-To run tests you must be execute
-```
-mvn clean test
-```
-> You can verify the behavior by accessing http://localhost:6080
-
-***
-
-### View the generated report by running from the command line
-you can view this report by accesing to:
-
-- `[WORKSPACE_LOCATION]/Lippia-mobile-sample-project/target/cucumber-report/mobile_sample.html`
-> "With each job build the report file will be replaced"
-
-![Lippia Extent Report](/docs/img/report_mobile.png)
-  
-
-***
-
-### Run from Jenkins
-
-Enter Jenkins console http://localhost:8080 with the following credentials  
-
-- Username: **admin**  
-- Password: **secret**
-
-### Build job
-
-![Jenkins_job](/docs/img/jenkins_start_job.png)
-***
-![jenkins build job](/docs/img/jenkins_job_build.png)
-
-***
-
-### View the generated report by running from Jenkins
-you can view all genenerated reports by jenkins by accesing to:
-
-- `http://localhost:8081`
-  
+![dockerAndroidNovnc](img/mobile_emulator.png)
