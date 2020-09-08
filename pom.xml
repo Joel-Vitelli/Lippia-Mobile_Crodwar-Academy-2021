@@ -10,19 +10,15 @@
     <parent>
        <groupId>io.lippia</groupId>
        <artifactId>root</artifactId>
-       <version>3.2.0</version>
+       <version>3.2.1.1</version>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <crowdar.cucumber.filter>@Demo</crowdar.cucumber.filter>
         <cucumber.runner>testngParallel.xml</cucumber.runner>
-        <crowdar.extent.report.path>cucumber-reports</crowdar.extent.report.path>
-        <crowdar.extent.report.name>CucumberExampleReport</crowdar.extent.report.name>
-        <crowdar.extent.host.name>LocalMachine</crowdar.extent.host.name>
-        <crowdar.extent.environment>Local</crowdar.extent.environment>
-        <crowdar.extent.user.name>User.name</crowdar.extent.user.name>
-        <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags 'not @Ignore' --plugin com.crowdar.examples.report.Reporter: --plugin pretty</crowdar.cucumber.option>
+        <crowdar.driverHub></crowdar.driverHub>
+        <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags 'not @Ignore' --plugin pretty</crowdar.cucumber.option>
         <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/androidCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
         <crowdar.remoteDriverType></crowdar.remoteDriverType>
         <crowdar.reporter.avent>true</crowdar.reporter.avent>
@@ -35,7 +31,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <crowdar.gridhub>http://127.0.0.1:4723/wd/hub</crowdar.gridhub>
+                <crowdar.driverHub>http://127.0.0.1:4723/wd/hub</crowdar.driverHub>
                 <cucumber.runner>testng.xml</cucumber.runner>
                 <crowdar.avd>Pixel3</crowdar.avd>
                 <crowdar.appLocation>C:/workspace/crowdar/lippia/Lippia-mobile-sample-project/sample_apk/lippia.apk</crowdar.appLocation>
@@ -43,20 +39,10 @@
             </properties>
         </profile>
         <profile>
-            <id>StackJenkins</id>
-            <properties>
-                <crowdar.extent.host.name>Jenkins</crowdar.extent.host.name>
-                <crowdar.gridhub>http://selenium_hub-mobile-apk:4444/wd/hub</crowdar.gridhub>
-                <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
-                <crowdar.appLocation>/root/tmp/sample_apk/lippia.apk</crowdar.appLocation>
-                <crowdar.deviceName>Android Emulator</crowdar.deviceName>
-            </properties>
-        </profile>
-        <profile>
             <id>StackLocal</id>
             <properties>
                 <crowdar.extent.host.name>Stack</crowdar.extent.host.name>
-                <crowdar.gridhub>http://localhost:4444/wd/hub</crowdar.gridhub>
+                <crowdar.driverHub>http://localhost:4444/wd/hub</crowdar.driverHub>
                 <crowdar.avd>samsung_galaxy_s7_9.0</crowdar.avd>
                 <crowdar.appLocation>/root/tmp/sample_apk/lippia.apk</crowdar.appLocation>
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
@@ -86,7 +72,7 @@
                 <crowdar.os.version>9.0</crowdar.os.version>
                 <crowdar.appLocation>bs://7e498849c478c31cba239bb5edcd0a73cd3c3fed</crowdar.appLocation>
                 <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/browserStackCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
-                <crowdar.gridhub>https://user:key@hub-cloud.browserstack.com/wd/hub</crowdar.gridhub>
+                <crowdar.driverHub>https://user:key@hub-cloud.browserstack.com/wd/hub</crowdar.driverHub>
             </properties>
         </profile>
     </profiles>
@@ -95,15 +81,9 @@
         <dependency>
                 <groupId>io.lippia</groupId>
                 <artifactId>core</artifactId>
-                <version>3.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.lippia.report</groupId>
-            <artifactId>extentreports-cucumber4-adapter</artifactId>
-            <version>1.1.0.10</version>
+                <version>3.2.1.1</version>
         </dependency>
     </dependencies>
-
     <build>
         <testResources>
             <testResource>
@@ -117,8 +97,8 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <suiteXmlFiles>

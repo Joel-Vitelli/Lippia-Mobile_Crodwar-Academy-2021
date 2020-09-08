@@ -8,7 +8,7 @@ to test a Mobile App using Lippia Automation Framework and Docker Android stack 
 
 ## Docker stack
 
-The following project includes the basic Docker Lippia Containers to run this  web sample project. You can choose to run the code from your favourite IDE, run from console or from Jenkins using the Docker Stack.
+The following project includes the basic Docker Lippia Containers to run this  web sample project. You can choose to run the code from your favourite IDE, run from console using the Docker Stack.
 To install and start a local instalation with Docker containers go to **Getting started** at the end of this guide.
 
 ![Lippia Extent Report](docs/img/architecture-mobile.png)
@@ -218,17 +218,6 @@ The capabilities are located in a json file. This file is mandatory. The values 
   "unicodeKeyboard": "true"
 }
 ```
-
-### Reports
-
-By default Lippia expose Test results using Extent Report Community Edition (https://github.com/extent-framework)
-In order to see test results this project includes extent report that show you the result of each run. This kind of reporting is really easy to understand.
-You just need to open it and navigate for all the report page to earn the much information as you can for every run.
-
-![Lippia Extent Report](/docs/img/report_mobile.png)
-
-* * *
-* * *
 
 # Getting started
 
