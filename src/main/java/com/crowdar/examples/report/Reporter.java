@@ -1,5 +1,5 @@
 package com.crowdar.examples.report;
-/*
+
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberGenericAdapter;
 import com.crowdar.driver.DriverManager;
 import org.openqa.selenium.OutputType;
@@ -21,4 +21,3 @@ public class Reporter extends ExtentCucumberGenericAdapter {
 		return false;
 	}
 }
-*/
