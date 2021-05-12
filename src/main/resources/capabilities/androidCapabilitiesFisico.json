@@ -1,0 +1,9 @@
+{
+  "deviceName": "{{deviceName}}",
+  "app": "{{app}}",
+  "platformName": "Android",
+  "appPackage": "com.phptravelsnative",
+  "resetKeyboard": "true",
+  "unicodeKeyboard": "true",
+  "deviceId": "192.168.31.219:5555"
+}
